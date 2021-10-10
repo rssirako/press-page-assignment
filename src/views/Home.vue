@@ -1,18 +1,25 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  </div>
-</template>
-
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import { computed, defineComponent, onMounted } from "vue";
+import HomeBanner from "../components/HomeBanner.vue";
+// import { useStore } from "../store";
+// import { ActionTypes } from "../store/actions";
 
 export default defineComponent({
-  name: "Home",
-  components: {
-    HelloWorld,
+  components: { HomeBanner },
+  setup() {
+    // const store = useStore();
+
+    // const loading = computed(() => store.state.loading);
+    // onMounted(() => store.dispatch(ActionTypes.GetTodoItems));
+
+    // const completedCount = computed(() => store.getters.completedCount);
+    // const totalCount = computed(() => store.getters.totalCount);
+
+    // return { loading, completedCount, totalCount };
   },
 });
 </script>
+
+<template>
+  <HomeBanner />
+</template>
