@@ -7,6 +7,7 @@ yarn install
 ```
 
 ### Compiles and hot-reloads for development
+### App serves on http://localhost:8080/ . If doesn't render, please clear cache or open in incognito window
 ```
 yarn serve
 ```

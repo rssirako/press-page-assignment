@@ -8,7 +8,7 @@ const mockUser = {
   repos_url: "mock/repo/url1",
 };
 
-fdescribe("UserCard", () => {
+describe("UserCard", () => {
   const wrapper = shallowMount(UserCard, {
     props: { userInfo: mockUser },
   });
