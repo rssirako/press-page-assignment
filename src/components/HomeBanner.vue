@@ -1,14 +1,16 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted } from "vue";
+import { defineComponent } from "vue";
 import { useStore } from "../store";
 import { ActionTypes } from "../store/actions";
 
 export default defineComponent({
-  // components: { TodoList, NewItem },
   setup() {
     const store = useStore();
 
     const fetchUsersData = () => {
+      if (store.getters.usersData && store.getters.usersData.length !== 0) {
+        return;
+      }
       store.dispatch(ActionTypes.GetUsers);
     };
     return { fetchUsersData };
@@ -40,3 +42,13 @@ export default defineComponent({
   </div>
 </template>
 
+<style scoped lang="scss">
+#q-app {
+  a {
+    text-decoration: none;
+    &.router-link-exact-active {
+      text-decoration: none;
+    }
+  }
+}
+</style>

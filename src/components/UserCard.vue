@@ -6,25 +6,28 @@ export default defineComponent({
   props: {
     userInfo: { type: Object as PropType<User>, required: true },
   },
+
   emits: ["deleteUser"],
+
   setup(props, context) {
-    console.log(props.userInfo.id);
     const user = computed(() => props.userInfo);
+
     const onDeleteUser = () => {
       context.emit("deleteUser", props.userInfo);
     };
+
     return { user, onDeleteUser };
   },
 });
 </script>
 
 <template>
-  <q-card class="my-card">
+  <q-card class="user-card">
     <q-img :src="`${user.avatar_url}`"></q-img>
 
     <q-card-section>
       <div class="row no-wrap items-center">
-        <div class="col text-h6 ellipsis">Username: {{ user.login }}</div>
+        <div class="user-card__name col text-h6 ellipsis">Username: {{ user.login }}</div>
       </div>
     </q-card-section>
     <q-card-section class="q-pt-none">
@@ -34,8 +37,8 @@ export default defineComponent({
     <q-separator></q-separator>
 
     <q-card-actions>
-      <q-btn flat round icon="delete" @click="onDeleteUser"></q-btn>
-      <q-btn flat color="primary" @click="onDeleteUser"> Delete </q-btn>
+      <q-btn class="user-card__icon-button" flat round icon="delete" @click="onDeleteUser"></q-btn>
+      <q-btn flat color="primary" @click="onDeleteUser" class="user-card__button" > Delete </q-btn>
     </q-card-actions>
   </q-card>
 </template>

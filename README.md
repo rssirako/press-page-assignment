@@ -1,4 +1,5 @@
-# press-page-assignment
+# press-page-assignment 
+# Rosen Sirakov
 
 ## Project setup
 ```

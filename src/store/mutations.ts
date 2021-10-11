@@ -4,7 +4,8 @@ import { State, User } from './state'
 export enum MutationType {
   SetUsers = 'SET_USERS',
   DeleteUser = 'DELETE_USER',
-  SetLoading = 'SET_LOADING'
+  SetLoading = 'SET_LOADING',
+  SetError = 'SET_ERROR',
 }
 
 export type Mutations = {
@@ -14,6 +15,7 @@ export type Mutations = {
     user: Partial<User> & { id: number }
   ): void
   [MutationType.SetLoading](state: State, value: boolean): void
+  [MutationType.SetError](state: State, value: string): void
 }
 
 export const mutations: MutationTree<State> & Mutations = {
@@ -25,5 +27,8 @@ export const mutations: MutationTree<State> & Mutations = {
   },
   [MutationType.SetLoading](state, value) {
     state.loading = value
+  },
+  [MutationType.SetError](state, value) {
+    state.error = value
   }
 }

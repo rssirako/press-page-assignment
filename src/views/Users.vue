@@ -10,14 +10,15 @@ export default defineComponent({
   components: { UserCard },
   setup() {
     const store = useStore();
-    const loading = computed(() => store.state.loading);
+    const loading = computed(() => store.getters.loading);
     const users = computed(() => store.getters.usersData);
+    const error = computed(() => store.getters.error);
     const deleteCard = (user: User) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       store.dispatch(ActionTypes.DeleteUser, user);
     };
-    return { loading, users, deleteCard };
+    return { loading, users, error, deleteCard };
   },
 });
 </script>
@@ -44,6 +45,9 @@ export default defineComponent({
         </q-card>
       </div>
     </div>
+  </div>
+  <div v-if="error !== 'no error'">
+    <p>We are experiencing technical dificulties. More details: {{ error }}</p>
   </div>
   <div else class="q-pa-md row items-start q-gutter-md">
     <UserCard

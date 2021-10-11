@@ -22,9 +22,11 @@ export type User = {
 export type State = {
   loading: boolean;
   users: User[];
+  error: string;
 };
 
 export const state: State = {
   loading: true,
   users: [],
+  error: 'no error',
 };
